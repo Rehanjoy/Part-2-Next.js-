@@ -12,6 +12,7 @@ function DetailedProduct() {
   const handleImageClick = (image) => {
     setSelectedImage(image);
   };
+  if(!product) return null
   return (
     <div className=" w-full  px-5 md:px-10 lg:px-20 py-5 ">
       <div key={product?.id} className="grid grid-cols-1 md:grid-cols-2 gap-8">
