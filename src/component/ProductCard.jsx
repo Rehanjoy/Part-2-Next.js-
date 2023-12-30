@@ -1,10 +1,8 @@
-// components/ProductCard.js
-
 import React from "react";
-import Link from 'next/link';
+import Link from "next/link";
 
 const ProductCard = ({ name, image, price, title, slug }) => {
-  const truncatedTitle = title.split(' ').slice(0, 40).join(' ');
+  const truncatedTitle = title.split(" ").slice(0, 40).join(" ");
 
   return (
     <div className="max-w-sm flex flex-col justify-around rounded overflow-hidden shadow-lg">
@@ -18,14 +16,18 @@ const ProductCard = ({ name, image, price, title, slug }) => {
         {price ? (
           <p className="text-red-600 text-xl font-bold line-clamp-1">{`${price}`}</p>
         ) : (
-          <p className="text-green-600 text-xl font-bold line-clamp-1">Wholesale Only</p>
+          <p className="text-green-600 text-xl font-bold line-clamp-1">
+            Wholesale Only
+          </p>
         )}
         <div className="mt-2">
           {/* Use the Link component to navigate to the detailed product page */}
           <Link
             href={{
-              pathname: '/DetailedProduct',
-              query: { data: JSON.stringify({ name, image, price, title, slug }) }
+              pathname: "/DetailedProduct",
+              query: {
+                data: JSON.stringify({ name, image, price, title, slug }),
+              },
             }}
           >
             <p className="w-full text-center bg-red-600 text-white py-2 px-4 rounded-full">
