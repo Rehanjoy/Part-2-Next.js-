@@ -1,19 +1,11 @@
-"use client"
+// components/ProductCard.js
+
 import React from "react";
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const ProductCard = ({ name, image, price, title, slug }) => {
-  const router = useRouter();
-
   const truncatedTitle = title.split(' ').slice(0, 40).join(' ');
 
-  const handleClick = () => {
-    // Navigate to the detailed product page with the product data
-    router.push({
-      pathname: '/DetailedProduct',
-      query: { data: JSON.stringify ({ name, image, price, title, slug }) }
-    });
-  };
   return (
     <div className="max-w-sm flex flex-col justify-around rounded overflow-hidden shadow-lg">
       <img className="w-full h-48 object-contain" src={image} alt={name} />
@@ -29,11 +21,17 @@ const ProductCard = ({ name, image, price, title, slug }) => {
           <p className="text-green-600 text-xl font-bold line-clamp-1">Wholesale Only</p>
         )}
         <div className="mt-2">
-          <button 
-            onClick={handleClick}
-            className="w-full bg-red-600 text-white py-2 px-4 rounded-full">
-            <span className="text-base font-semibold">View</span>
-          </button>
+          {/* Use the Link component to navigate to the detailed product page */}
+          <Link
+            href={{
+              pathname: '/DetailedProduct',
+              query: { data: JSON.stringify({ name, image, price, title, slug }) }
+            }}
+          >
+            <p className="w-full text-center bg-red-600 text-white py-2 px-4 rounded-full">
+              View
+            </p>
+          </Link>
         </div>
       </div>
     </div>
